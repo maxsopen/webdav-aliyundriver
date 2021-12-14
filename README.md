@@ -2,6 +2,7 @@
 说明：[1.1.0版本](https://github.com/zxbu/webdav-aliyundriver/releases/tag/v1.1.0)支持阿里Teambition网盘的webdav协议，后续的2.x版本仅支持阿里云盘，不再维护Teambition网盘版本
 
 - [webdav-aliyundriver](#webdav-aliyundriver)
+- [构建docker镜像](#构建docker镜像)
 - [如何使用](#如何使用)
   - [Jar包运行](#jar包运行)
   - [容器运行](#容器运行)
@@ -26,6 +27,8 @@
 本项目实现了阿里云盘的webdav协议，只需要简单的配置一下，就可以让阿里云盘变身为webdav协议的文件服务器。
 基于此，你可以把阿里云盘挂载为Windows、Linux、Mac系统的磁盘，可以通过NAS系统做文件管理或文件同步，更多玩法等你挖掘
 
+# 构建docker镜像
+`docker build .`构建支持`arm64v8`和`amd64`的镜像，`docker build . -f Dockerfile.armv7`构建支持`arm32v7`的镜像
 
 # 如何使用
 支持refreshToken登录方式，具体看参数说明
@@ -64,7 +67,7 @@ services:
     restart: always
 
 # “refreshToken”请根据下文说明自行获取。
-# “ALIYUNDRIVE_AUTH_USER-NAME”和“ALIYUNDRIVE_AUTH_PASSWORD”为连接用户名和密码，建议更改。
+# “ALIYUNDRIVE_AUTH_USER_NAME”和“ALIYUNDRIVE_AUTH_PASSWORD”为连接用户名和密码，建议更改。
 # “/etc/aliyun-driver/:/etc/aliyun-driver/”，可以把冒号前改为指定目录，比如“/homes/USER/docker/alidriver/:/etc/aliyun-driver/”。
 # 删除了“/etc/localtime:/etc/localtime”，如有需要同步时间请自行添加在environment下。
 # 端口6666可自行按需更改，此端口为WebDAV连接端口,8080为容器内配置端口，修改请量力而为。

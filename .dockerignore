@@ -1,0 +1,6 @@
+# exclude some files
+.git*
+docker*
+*.md
+Dockerfile*
+.dockerignore
